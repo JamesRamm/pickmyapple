@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    <h1>Pick My Apple</h1>
+
+    <h3>Swap your garden</h3>
+
+    <p><bold>Latest offers:</bold></p>
+    <ul>
+    {% for item in offers.all %}
+        <li>{{item}}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
