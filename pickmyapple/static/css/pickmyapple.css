@@ -1,0 +1,30 @@
+
+#marketplace {
+    margin-top: 5%;
+}
+
+#marketplace-header {
+    font-size: 3rem;
+    margin-top: 10%;
+}
+
+h1, h2, h3 .ui.header {
+    font-family: 'Cabin Sketch', cursive;
+}
+
+.main {
+    padding-top: 3rem;
+}
+
+@media only screen and (min-width: 768px) {
+
+    #marketplace-header {
+        font-size: 4rem;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #marketplace-header {
+        font-size: 5rem;
+    }
+}

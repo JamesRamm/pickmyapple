@@ -3,14 +3,54 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <h1>Pick My Apple</h1>
+<div class="ui container main">
+    <h1 class="ui centered massive header" id="marketplace-header">Marketplace</h1>
+    <div class="ui vertical fluid menu" id="marketplace">
+        {% for item in offers.all %}
+        <div class="link item">
+            <div class="ui centered three column grid">
+                  <div class="row">
+                    <div class="center aligned column">
+                        <span><i class="user icon"></i>{{ item.user }}</span>
+                    </div>
+                    <div class="center aligned  column">
+                        <h2 class="ui header">{{ item.plant }}s</h2>
+                    </div>
+                    <div class="center aligned  column">
+                        <span><i class="law icon"></i>{{ item.quantity }} {{item.get_quantity_units_display}}</span>
 
-    <h3>Swap your garden</h3>
-
-    <p><bold>Latest offers:</bold></p>
-    <ul>
-    {% for item in offers.all %}
-        <li>{{item}}</li>
-    {% endfor %}
-    </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="center aligned column">
+                        {% if item.wanted_plant %}
+                        <span><i class="exchange icon"></i> {{ item.wanted_plant }}</span>
+                        {% elif item.is_free %}
+                        <span><i class="heart icon"></i> Free!</span>
+                        {% endif %}
+                    </div>
+                    <div class="center aligned column">
+                        {% if item.will_post %}
+                        <span><i class="send icon"></i>Will post</span>
+                        {% elif item.pick_your_own %}
+                        <span><i class="tree icon"></i>PYO</span>
+                        {% endif %}
+                    </div>
+                    <div class="center aligned column"></div>
+                </div>
+                <div class="row">
+                    <div class="center aligned column">
+                    </div>
+                    <div class="center aligned column">
+                        {% if item.will_post and item.pick_your_own %}
+                        <span><i class="tree icon"></i>PYO</span>
+                        {% endif %}
+                    </div>
+                    <div class="center aligned column"></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

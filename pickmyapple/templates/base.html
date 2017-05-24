@@ -22,6 +22,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
+        <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'semantic.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/pickmyapple.css' %}">
 
         {% block extra_css %}
@@ -29,17 +31,27 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}" style="background: url('{% static "img/vegg.svg" %}'); background-size: 100%;">
         {% wagtailuserbar %}
-        <nav>
-            <a href='/'>Home</a>
-            <a href='#'>Market</a>
-            <a id="google_login" href='/accounts/google/login'>Login</a>
-        </nav>
+        <div class="ui top fixed menu">
+            <div class="ui container">
+                <a class="item" href="/">Home</a>
+                <a class="item">Market</a>
+                <a class="item" id="google_login" href='/accounts/google/login'>Login</a>
+                <div class="center item">
+                    <h3 class="ui header">Pick My Apple</h3>
+                </div>
+                <div class="right item">
+                    <div class="ui input"><input type="text" placeholder="Search..."></div>
+                </div>
+            </div>
+        </div>
         {% block content %}{% endblock %}
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/pickmyapple.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{% static 'semantic.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/pickmyapple.js' %}"></script>        
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
